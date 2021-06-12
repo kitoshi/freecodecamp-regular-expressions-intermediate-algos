@@ -1,61 +1,63 @@
 function checkCashRegister(price, cash, cid) {
-    const newArr = []
-    const drawer = {status: "CLOSED", change: cid}
-    var change = cash - price
-    var decimal = parseFloat((change - Math.floor(change)).toPrecision(2))
-    var whole = Math.trunc(change)
-    console.log(decimal, whole)
-    const reversed = cid.reverse()
-    console.log(change)
-    for (const type of reversed) {
-  
-        console.log(type[1])
-        if ((change / type[1]) >= 1){
-          const output = (change/number) / 1
-          newArr.push(type[0], output*type[1])
-          var change = (cash - price - output)
-        
+  const newArr = []
+  const number = [
+  ["PENNY", .01],
+  ["NICKEL", .05],
+  ["DIME", .1],
+  ["QUARTER", .25],
+  ["ONE", 1],
+  ["FIVE", 5],
+  ["TEN", 10],
+  ["TWENTY", 20],
+  ["ONE HUNDRED", 100]
+]
+  const reversedLegend = number.reverse()
+  const drawer = {status: "CLOSED", change: cid}
+  var change = cash - price
+  var decimal = parseFloat((change - Math.floor(change)).toPrecision(2))
+  var returnchange = Math.trunc(change)
+  const reversed = cid.reverse() //100 to penny
+  do {
+      switch (true) {
+        case (returnchange >= 100): 
+          var output = Math.floor(returnchange/reversedLegend[0][1])
+          newArr.push(reversed[0][0], output*reversedLegend[0][1])
+          var returnchange = (returnchange - (output * 100)).toFixed(2)
+          break;
+        case (returnchange >= 20 && returnchange < 100):
+          var output = Math.floor(returnchange/reversedLegend[1][1])
+          newArr.push(reversed[1][0], output * reversedLegend[1][1])
+          var returnchange = (returnchange - (output * 20)).toFixed(2)
+          break;
+       case (returnchange >= 10 && returnchange < 20):
+          var output = Math.floor(returnchange/reversedLegend[2][1])
+          newArr.push(reversed[2][0], output*reversedLegend[2][1])
+          var returnchange = (returnchange - (output * 10)).toFixed(2)
+          break;
+        case (returnchange >= 5 && returnchange < 10):
+        console.log(returnchange)
+          var output = (returnchange/reversedLegend[3][1])
+          newArr.push(reversed[3][0], output*reversedLegend[3][1])
+          var returnchange = (returnchange - (output * 5)).toFixed(2)
+          break;
+        case (returnchange > 0 && returnchange < 5):
+          var output = (returnchange/reversedLegend[4][1])
+          newArr.push(reversed[4][0], output*reversedLegend[4][1])
+          var returnchange = (returnchange - (output * 1)).toFixed(2)
+          break;
+        default:
+        //how to rerun if returnchange > 0
       }
-  
-    }
-    console.log(newArr)
-    const opendrawer = {status: "OPEN", change: [newArr]}
-    return Object.assign(drawer, opendrawer);
+  } while (returnchange > 0)
+  {
+  const opendrawer = {status: "OPEN", change: [newArr]}
+        console.log(opendrawer)
+        console.log(newArr)
+  return Object.assign(drawer, opendrawer);
   }
+}
+ 
   
-  checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
-  function checkCashRegister(price, cash, cid) {
-    const newArr = []
-    const drawer = {status: "CLOSED", change: cid}
-    var change = cash - price
-    var decimal = parseFloat((change - Math.floor(change)).toPrecision(2))
-    var whole = Math.trunc(change)
-    const reversed = cid.reverse()
-    //whole bills
-    for (let i = 0; i < 5; i++) {
-      console.log(cid[i][1])
-        if (whole > 100){
-          const output = (whole/cid[i][1])
-          newArr.push(cid[i], output*cid[i][1])
-          var whole = whole - output * 100
-      }
-    }
-    console.log(newArr)
-  
-    //decimal coins
-    /*for (let i = 0; i < cid.length; i++) {
-        console.log(type[1])
-        if ((change / type[1]) >= 1){
-          const output = (change/number) / 1
-          newArr.push(type[0], output*type[1])
-          var change = (cash - price - output)
-      }
-    }
-    console.log(newArr)
-    const opendrawer = {status: "OPEN", change: [newArr]}
-    return Object.assign(drawer, opendrawer);
-    */
-    
-  }
-  
-  checkCashRegister(15, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
+
+
+checkCashRegister(19, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 80], ["ONE HUNDRED", 300]])
