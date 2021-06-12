@@ -5,7 +5,6 @@ function convertToRoman(num) {
   const romanArr = []
 
   for (let value = 0; value < revArr.length; value++) {
-    let i = newArr.length
     var denseKeys = [...newArr.keys()]
     var v = denseKeys.indexOf(value)
         if (newArr[value] == 0) {
