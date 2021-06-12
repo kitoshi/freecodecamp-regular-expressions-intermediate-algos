@@ -21,11 +21,11 @@ function convertToRoman(num) {
           romanArr.unshift(symbols[value + v].repeat(revArr[value]))
         } else if (revArr[value] == 4) {
           romanArr.unshift(symbols[value + v] + symbols[value + v + 1])
-        } else if (value == 5) {
+        } else if (revArr[value] == 5) {
+          romanArr.unshift(symbols[value+v+1])
+        } else if (revArr[value] < 9) {
           romanArr.unshift(symbols[i+1])
-        } else if (value < 9) {
-          romanArr.unshift(symbols[i+1])
-        } else if (value == 9) {
+        } else if (revArr[value] == 9) {
           romanArr.unshift(symbols[i] + symbols[i+2])
         } 
     }
@@ -39,4 +39,4 @@ function convertToRoman(num) {
     
 
 
-convertToRoman(14);
+convertToRoman(555);
