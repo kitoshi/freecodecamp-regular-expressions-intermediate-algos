@@ -8,7 +8,7 @@ function convertToRoman(num) {
     var denseKeys = [...newArr.keys()]
     var v = denseKeys.indexOf(value)
         if (newArr[value] == 0) {
-          
+          //do nothing
         } else if (revArr[value] == 1) {
           if (revArr.length == 1) {
             romanArr.unshift(symbols[value])
