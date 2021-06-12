@@ -26,7 +26,7 @@ function convertToRoman(num) {
         } else if (revArr[value] < 9) {
           romanArr.unshift(symbols[value+1+ v] + symbols[value + v].repeat(revArr[value] - 5))
         } else if (revArr[value] == 9) {
-          romanArr.unshift(symbols[i] + symbols[i+2])
+          romanArr.unshift(symbols[value+v] + symbols[value+v+2])
         } 
     }
     const result = romanArr.join('')
@@ -39,4 +39,4 @@ function convertToRoman(num) {
     
 
 
-convertToRoman(888);
+convertToRoman(99);
