@@ -24,7 +24,7 @@ function convertToRoman(num) {
         } else if (revArr[value] == 5) {
           romanArr.unshift(symbols[value+v+1])
         } else if (revArr[value] < 9) {
-          romanArr.unshift(symbols[i+1])
+          romanArr.unshift(symbols[value+1+ v] + symbols[value + v].repeat(revArr[value] - 5))
         } else if (revArr[value] == 9) {
           romanArr.unshift(symbols[i] + symbols[i+2])
         } 
@@ -39,4 +39,4 @@ function convertToRoman(num) {
     
 
 
-convertToRoman(555);
+convertToRoman(888);
