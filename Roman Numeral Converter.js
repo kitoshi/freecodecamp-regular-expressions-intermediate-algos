@@ -33,10 +33,16 @@ function convertToRoman(num) {
     console.log(result)
     return result
   }
-  
-    
-    
+
+  convertToRoman(2014);
+/* note to self : try JS switch 
+
     
 
+Convert the given number into a roman numeral.
 
-convertToRoman(2014);
+All roman numerals answers should be provided in upper-case.
+
+https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/roman-numeral-converter
+
+*/
