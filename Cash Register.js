@@ -25,11 +25,15 @@ function checkCashRegister(price, cash, cid) {
         var returnchange = (returnchange - (output * 100)).toFixed(2)
         break;
       case (returnchange >= 20 && reversed[1][1] >= 20 && newArr.includes('TWENTY') == false):
+      console.log(returnchange)
         var output = Math.floor(returnchange / reversedLegend[1][1])
         if (reversed[1][1] < output * reversedLegend[1][1]) {
+          var remainder = returnchange - output * reversedLegend[1][1] // remainder needs to be
+          //in all combos
+          console.log(remainder)
           var difference = output * reversedLegend[1][1] - reversed[1][1]
           newArr.push(reversed[1][0], reversed[1][1])
-          var returnchange = difference
+          var returnchange = difference + remainder // remainder added here
           break;
         } else if (newArr.includes('TWENTY') == false){
         newArr.push(reversed[1][0], output * reversedLegend[1][1])
@@ -77,27 +81,54 @@ function checkCashRegister(price, cash, cid) {
   } while (returnchange > 0) 
   do {
     switch (true) {
-      case (decimal < 1 && decimal >= 0.25):
+      case (decimal >= 0.25 && reversed[5][1] >= 0.25 && newArr.includes('QUARTER') == false):
         var output = Math.floor(decimal / reversedLegend[5][1])
+        if (reversed[5][1] < output * reversedLegend[5][1]) {
+        var difference = output * reversedLegend[5][1] - reversed[5][1]
+        newArr.push(reversed[5][0], reversed[5][1])
+        var decimal = difference
+        break;
+        } else if (newArr.includes('QUARTER') == false){
         newArr.push(reversed[5][0], output * reversedLegend[5][1])
         var decimal = (decimal - (output * 0.25)).toFixed(2)
         break;
-     case (decimal >= 0.1 && decimal < 0.25):
+        }
+      case (decimal >= 0.1 && reversed[6][1] >= 0.1 && newArr.includes('DIME') == false):
         var output = Math.floor(decimal / reversedLegend[6][1])
+        if (reversed[6][1] < output * reversedLegend[6][1]) {
+        var difference = output * reversedLegend[6][1] - reversed[6][1]
+        newArr.push(reversed[6][0], reversed[6][1])
+        var decimal = difference
+        break;
+        } else if (newArr.includes('DIME') == false){
         newArr.push(reversed[6][0], output * reversedLegend[6][1])
         var decimal = (decimal - (output * 0.10)).toFixed(2)
-        break;
-     case (decimal >= 0.05 && decimal < 0.1):
+        break
+        }
+      case (decimal >= 0.05 && reversed[7][1] >= 0.05 && newArr.includes('NICKEL') == false):
         var output = Math.floor(decimal / reversedLegend[7][1])
+        if (reversed[7][1] < output * reversedLegend[7][1]) {
+        var difference = output * reversedLegend[7][1] - reversed[7][1]
+        newArr.push(reversed[7][0], reversed[7][1])
+        var decimal = difference
+        break;
+        } else if (newArr.includes('NICKEL') == false){
         newArr.push(reversed[7][0], output * reversedLegend[7][1])
         var decimal = (decimal - (output * 0.05)).toFixed(2)
-        break;
-     case (decimal >= 0.01 && decimal < 0.05):
-        console.log(decimal)
+        break
+        }
+    case (decimal >= 0.01 && reversed[8][1] >= 0.01 && newArr.includes('PENNY') == false):
         var output = Math.floor(decimal / reversedLegend[8][1])
+        if (reversed[8][1] < output * reversedLegend[8][1]) {
+        var difference = output * reversedLegend[8][1] - reversed[8][1]
+        newArr.push(reversed[8][0], reversed[8][1])
+        var decimal = difference
+        break;
+        } else if (newArr.includes('PENNY') == false){
         newArr.push(reversed[8][0], output * reversedLegend[8][1])
         var decimal = (decimal - (output * 0.01)).toFixed(2)
-        break;
+        break
+        }
       default:
     }
   } while (decimal > 0.00)
@@ -120,4 +151,4 @@ function checkCashRegister(price, cash, cid) {
   
 
 
-checkCashRegister(20, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 20], ["ONE HUNDRED", 100]])
+checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
