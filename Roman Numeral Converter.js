@@ -8,8 +8,6 @@ function convertToRoman(num) {
     let i = newArr.length
     var denseKeys = [...newArr.keys()]
     var v = denseKeys.indexOf(value)
-    console.log(symbols[value + v])
-    console.log(denseKeys.indexOf(value))
         if (newArr[value] == 0) {
           
         } else if (revArr[value] == 1) {
@@ -21,13 +19,12 @@ function convertToRoman(num) {
         }
          else if (revArr[value] <= 3) {
           romanArr.unshift(symbols[value + v].repeat(revArr[value]))
-        } else if (value == 4) {
-          console.log(symbols[i] + symbols[1])
-          romanArr.unshift(symbols[i] + symbols[1])
+        } else if (revArr[value] == 4) {
+          romanArr.unshift(symbols[value + v] + symbols[value + v + 1])
         } else if (value == 5) {
           romanArr.unshift(symbols[i+1])
         } else if (value < 9) {
-          romanArr.unshift(symbols[i+1] + symbols[i].repeat(value - 5))
+          romanArr.unshift(symbols[i+1])
         } else if (value == 9) {
           romanArr.unshift(symbols[i] + symbols[i+2])
         } 
@@ -42,4 +39,4 @@ function convertToRoman(num) {
     
 
 
-convertToRoman(3);
+convertToRoman(14);
