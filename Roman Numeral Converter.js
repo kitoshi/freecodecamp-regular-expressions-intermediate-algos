@@ -20,7 +20,7 @@ function convertToRoman(num) {
           }
         }
          else if (revArr[value] <= 3) {
-          romanArr.unshift(symbols[value].repeat(denseKeys.length))
+          romanArr.unshift(symbols[value + v].repeat(revArr[value]))
         } else if (value == 4) {
           console.log(symbols[i] + symbols[1])
           romanArr.unshift(symbols[i] + symbols[1])
@@ -42,4 +42,4 @@ function convertToRoman(num) {
     
 
 
-convertToRoman(1111);
+convertToRoman(3);
