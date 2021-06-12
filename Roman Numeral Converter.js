@@ -29,7 +29,8 @@ function convertToRoman(num) {
           romanArr.unshift(symbols[value+v] + symbols[value+v+2])
         } 
     }
-    const result = romanArr.join('')
+    const clean = romanArr.join(" ").trim().split(' ');
+    const result = clean.join('')
     console.log(result)
     return result
   }
@@ -39,4 +40,4 @@ function convertToRoman(num) {
     
 
 
-convertToRoman(99);
+convertToRoman(2014);
