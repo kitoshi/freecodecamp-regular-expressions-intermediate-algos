@@ -1,1 +1,1 @@
-# freecodecamp-basic-javascript
+# freecodecamp-intermediate-javascript
